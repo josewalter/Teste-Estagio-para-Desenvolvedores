@@ -30,7 +30,7 @@ public class Filme {
 	@Column(name = "fil_nome", length = 35, nullable = false)
 	private String nome;
 	
-	@Column(name = "fil_nome", length = 50, nullable = false)
+	@Column(name = "fil_descricao", length = 50, nullable = false)
 	private String descricao;
 	
 //======================================================================================================================	

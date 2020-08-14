@@ -2,6 +2,9 @@ package br.com.testeestagioparadesenvolvedores.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /*
@@ -13,6 +16,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tbl_res_aluguel_filme")
 public class ReferenciaAluguelFilme {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column(name = "id_res_aluguel_filme")
+	private Integer idReferenciaAlugelFilme;
 
 	@Column(name = "id_filme")
 	private Integer idFilme;
@@ -29,14 +37,23 @@ public class ReferenciaAluguelFilme {
 	
 //======================================================================================================================	
 	//Construtor and fields
-    public ReferenciaAluguelFilme(Integer idFilme, Integer idAluguel) {
+	public ReferenciaAluguelFilme(Integer idReferenciaAlugelFilme, Integer idFilme, Integer idAluguel) {
 		super();
+		this.idReferenciaAlugelFilme = idReferenciaAlugelFilme;
 		this.idFilme = idFilme;
 		this.idAluguel = idAluguel;
-  }
+	}
 
 //======================================================================================================================	
   	//Getters and Setters    
+	public Integer getIdReferenciaAlugelFilme() {
+		return idReferenciaAlugelFilme;
+	}
+
+	public void setIdReferenciaAlugelFilme(Integer idReferenciaAlugelFilme) {
+		this.idReferenciaAlugelFilme = idReferenciaAlugelFilme;
+	}
+
 	public Integer getIdFilme() {
 		return idFilme;
 	}
@@ -51,23 +68,25 @@ public class ReferenciaAluguelFilme {
 
 	public void setIdAluguel(Integer idAluguel) {
 		this.idAluguel = idAluguel;
-	}
+	}	
 
 //======================================================================================================================	
 	//ToString
 	@Override
 	public String toString() {
-		return "ReferenciaAluguelFilme [idFilme=" + idFilme + ", idAluguel=" + idAluguel + "]";
+		return "ReferenciaAluguelFilme [idReferenciaAlugelFilme=" + idReferenciaAlugelFilme + ", idFilme=" + idFilme
+				+ ", idAluguel=" + idAluguel + "]";
 	}
 
 //======================================================================================================================
-	//HashCode and Equals
+	//HashCode and Equals	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((idAluguel == null) ? 0 : idAluguel.hashCode());
 		result = prime * result + ((idFilme == null) ? 0 : idFilme.hashCode());
+		result = prime * result + ((idReferenciaAlugelFilme == null) ? 0 : idReferenciaAlugelFilme.hashCode());
 		return result;
 	}
 
@@ -89,6 +108,11 @@ public class ReferenciaAluguelFilme {
 			if (other.idFilme != null)
 				return false;
 		} else if (!idFilme.equals(other.idFilme))
+			return false;
+		if (idReferenciaAlugelFilme == null) {
+			if (other.idReferenciaAlugelFilme != null)
+				return false;
+		} else if (!idReferenciaAlugelFilme.equals(other.idReferenciaAlugelFilme))
 			return false;
 		return true;
 	}
