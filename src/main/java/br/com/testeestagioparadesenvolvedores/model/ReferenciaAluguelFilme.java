@@ -2,9 +2,12 @@ package br.com.testeestagioparadesenvolvedores.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /*
@@ -22,11 +25,13 @@ public class ReferenciaAluguelFilme {
 	@Column(name = "id_res_aluguel_filme")
 	private Integer idReferenciaAlugelFilme;
 
-	@Column(name = "id_filme")
-	private Integer idFilme;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "tbl_filme_id_filme", referencedColumnName = "id_filme", nullable = false)
+	private Filme filme;
 	
-	@Column(name = "id_aluguel")
-	private Integer idAluguel;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "tbl_aluguel_id_aluguel", referencedColumnName = "id_aluguel", nullable = false)
+	private Aluguel aluguel;
 
 //======================================================================================================================	
 	//Construtor builder	
@@ -37,11 +42,11 @@ public class ReferenciaAluguelFilme {
 	
 //======================================================================================================================	
 	//Construtor and fields
-	public ReferenciaAluguelFilme(Integer idReferenciaAlugelFilme, Integer idFilme, Integer idAluguel) {
+	public ReferenciaAluguelFilme(Integer idReferenciaAlugelFilme, Filme filme, Aluguel aluguel)  {
 		super();
 		this.idReferenciaAlugelFilme = idReferenciaAlugelFilme;
-		this.idFilme = idFilme;
-		this.idAluguel = idAluguel;
+		this.filme = filme;
+		this.aluguel = aluguel;
 	}
 
 //======================================================================================================================	
@@ -54,28 +59,28 @@ public class ReferenciaAluguelFilme {
 		this.idReferenciaAlugelFilme = idReferenciaAlugelFilme;
 	}
 
-	public Integer getIdFilme() {
-		return idFilme;
+	public Filme getFilme() {
+		return filme;
 	}
 
-	public void setIdFilme(Integer idFilme) {
-		this.idFilme = idFilme;
+	public void setFilme(Filme filme) {
+		this.filme = filme;
 	}
 
-	public Integer getIdAluguel() {
-		return idAluguel;
+	public Aluguel getAluguel() {
+		return aluguel;
 	}
 
-	public void setIdAluguel(Integer idAluguel) {
-		this.idAluguel = idAluguel;
-	}	
+	public void setAluguel(Aluguel aluguel) {
+		this.aluguel = aluguel;
+	}
 
-//======================================================================================================================	
+	//======================================================================================================================	
 	//ToString
 	@Override
 	public String toString() {
-		return "ReferenciaAluguelFilme [idReferenciaAlugelFilme=" + idReferenciaAlugelFilme + ", idFilme=" + idFilme
-				+ ", idAluguel=" + idAluguel + "]";
+		return "ReferenciaAluguelFilme [idReferenciaAlugelFilme=" + idReferenciaAlugelFilme + ",filme=" + filme
+				+ ", aluguel=" + aluguel + "]";
 	}
 
 //======================================================================================================================
@@ -84,8 +89,8 @@ public class ReferenciaAluguelFilme {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idAluguel == null) ? 0 : idAluguel.hashCode());
-		result = prime * result + ((idFilme == null) ? 0 : idFilme.hashCode());
+		result = prime * result + ((aluguel == null) ? 0 : aluguel.hashCode());
+		result = prime * result + ((filme == null) ? 0 : filme.hashCode());
 		result = prime * result + ((idReferenciaAlugelFilme == null) ? 0 : idReferenciaAlugelFilme.hashCode());
 		return result;
 	}
@@ -99,15 +104,15 @@ public class ReferenciaAluguelFilme {
 		if (getClass() != obj.getClass())
 			return false;
 		ReferenciaAluguelFilme other = (ReferenciaAluguelFilme) obj;
-		if (idAluguel == null) {
-			if (other.idAluguel != null)
+		if (aluguel == null) {
+			if (other.aluguel != null)
 				return false;
-		} else if (!idAluguel.equals(other.idAluguel))
+		} else if (!aluguel.equals(other.aluguel))
 			return false;
-		if (idFilme == null) {
-			if (other.idFilme != null)
+		if (filme == null) {
+			if (other.filme != null)
 				return false;
-		} else if (!idFilme.equals(other.idFilme))
+		} else if (!filme.equals(other.filme))
 			return false;
 		if (idReferenciaAlugelFilme == null) {
 			if (other.idReferenciaAlugelFilme != null)
