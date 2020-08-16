@@ -1,6 +1,7 @@
 package br.com.testeestagioparadesenvolvedores.model;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ import javax.persistence.TemporalType;
 public class Aluguel {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	@Column(name = "id_aluguel")
 	private Integer idAluguel;
 	
@@ -34,9 +35,8 @@ public class Aluguel {
 	@JoinColumn(name = "tbl_cliente_id_cliente", referencedColumnName = "id_cliente", nullable = false)
 	private Cliente cliente;
 	
-	@Temporal(value = TemporalType.DATE)
-	@Column(name = "alu_data_aluguel", nullable = false)
-	private Date data_aluguel;
+	@Column
+	private LocalDate data_aluguel;
 	
 	@Column(name = "alu_valor", scale = 7, precision = 2, nullable = false)
 	private double valor;
@@ -50,7 +50,7 @@ public class Aluguel {
 
 //======================================================================================================================	
 	//Construtor and fields
-    public Aluguel(Integer idAluguel, Cliente cliente, Date data_aluguel, double valor) {
+    public Aluguel(Integer idAluguel, Cliente cliente, LocalDate data_aluguel, double valor) {
 		super();
 		this.idAluguel = idAluguel;
 		this.cliente = cliente;
@@ -76,11 +76,11 @@ public class Aluguel {
 		this.cliente = cliente;
 	}
 
-	public Date getData_aluguel() {
+	public LocalDate getData_aluguel() {
 		return data_aluguel;
 	}
 
-	public void setData_aluguel(Date data_aluguel) {
+	public void setData_aluguel(LocalDate data_aluguel) {
 		this.data_aluguel = data_aluguel;
 	}
 

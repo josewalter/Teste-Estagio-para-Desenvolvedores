@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class ReferenciaAluguelFilme {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	@Column(name = "id_res_aluguel_filme")
 	private Integer idReferenciaAlugelFilme;
 

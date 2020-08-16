@@ -8,7 +8,7 @@ import br.com.testeestagioparadesenvolvedores.model.Cliente;
 
 /*
  * Descrição: Entidade cliente repository
- * Data: 30/12/2019  10:02
+ * Data: 14/08/2020  10:02
  * Autor: José Walter
  */
 @Repository

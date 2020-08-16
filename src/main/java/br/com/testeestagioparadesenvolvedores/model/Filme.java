@@ -1,6 +1,6 @@
 package br.com.testeestagioparadesenvolvedores.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 /*
  * Descrição: Entidade Filme
@@ -22,18 +21,17 @@ import javax.persistence.TemporalType;
 public class Filme {
 		
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	@Column(name = "id_filme")
 	private Integer idFilme;
+
+	@Column
+	private LocalDate data_lancamento;
 	
-	@Temporal(value = TemporalType.DATE)
-	@Column(name = "fil_data_lancamento", nullable = false)
-	private Date data_lancamento;
-	
-	@Column(name = "fil_nome", length = 35, nullable = false)
+	@Column(name = "fil_nome", length = 50, nullable = false)
 	private String nome;
 	
-	@Column(name = "fil_descricao", length = 50, nullable = false)
+	@Column(name = "fil_descricao", length = 800, nullable = false)
 	private String descricao;
 	
 //======================================================================================================================	
@@ -45,7 +43,7 @@ public class Filme {
 
 //======================================================================================================================	
 	 //Construtor and fields
-	public Filme(Integer idFilme, Date data_lancamento, String nome, String descricao) {
+	public Filme(Integer idFilme, LocalDate data_lancamento, String nome, String descricao) {
 		super();
 		this.idFilme = idFilme;
 		this.data_lancamento = data_lancamento;
@@ -63,11 +61,11 @@ public class Filme {
 		this.idFilme = idFilme;
 	}
 
-	public Date getData_lancamento() {
+	public LocalDate getData_lancamento() {
 		return data_lancamento;
 	}
 
-	public void setData_lancamento(Date data_lancamento) {
+	public void setData_lancamento(LocalDate data_lancamento) {
 		this.data_lancamento = data_lancamento;
 	}
 

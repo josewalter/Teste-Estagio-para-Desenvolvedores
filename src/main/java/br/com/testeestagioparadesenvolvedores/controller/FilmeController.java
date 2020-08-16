@@ -4,6 +4,7 @@ package br.com.testeestagioparadesenvolvedores.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.testeestagioparadesenvolvedores.model.Cliente;
 import br.com.testeestagioparadesenvolvedores.model.Filme;
-import br.com.testeestagioparadesenvolvedores.service.ClienteService;
 import br.com.testeestagioparadesenvolvedores.service.FilmeService;
 
 
 /*
- * Descrição: Classe Filme Controller
- * Data: 14/08/2020  21:49
+ * Descrição: Classe Cliente Controller
+ * Data: 14/08/2020  08:30
  * Autor: José Walter
  */
 @RestController
 public class FilmeController {
 	
 	@Autowired
-    FilmeService filmeService;	
+	FilmeService filmeService;	
 	
 	//EndPoints
 		
@@ -75,5 +74,4 @@ public class FilmeController {
 		Filme filmeAlterado = filmeService.alterar(filme);
 		return new ResponseEntity<>(filmeAlterado, HttpStatus.OK);
 	}
-
 }

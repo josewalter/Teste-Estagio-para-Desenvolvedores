@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.testeestagioparadesenvolvedores.model.Cliente;
 import br.com.testeestagioparadesenvolvedores.service.ClienteService;
 
-
 /*
  * Descrição: Classe Cliente Controller
- * Data: 01/1/2020  08:30
+ * Data: 14/08/2020  08:30
  * Autor: José Walter
  */
 @RestController
@@ -73,5 +72,4 @@ public class ClienteController {
 		Cliente clienteAlterado = clienteService.alterar(cliente);
 		return new ResponseEntity<>(clienteAlterado, HttpStatus.OK);
 	}
-
 }

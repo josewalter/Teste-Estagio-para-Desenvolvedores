@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.testeestagioparadesenvolvedores.model.Aluguel;
-import br.com.testeestagioparadesenvolvedores.model.Cliente;
 import br.com.testeestagioparadesenvolvedores.repository.AluguelRepository;
-import br.com.testeestagioparadesenvolvedores.repository.ClienteRepository;
 
 
 /*
@@ -52,7 +50,7 @@ public class AluguelService {
 				aluguelRepository.delete(aluguel);
 				System.out.println(" O aluguel " + aluguel + " foi excluido com sucesso!!");
 			}else{
-				System.out.println(" O aluguel não existe!!");
+				System.out.println(" O aluguel não foi encontrado!!");
 			}
 			
 		}
