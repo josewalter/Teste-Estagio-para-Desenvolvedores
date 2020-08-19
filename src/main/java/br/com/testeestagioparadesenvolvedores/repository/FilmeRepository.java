@@ -14,6 +14,6 @@ import br.com.testeestagioparadesenvolvedores.model.Filme;
 @Repository
 public interface FilmeRepository extends JpaRepository<Filme, Integer> {
 
-	// List<Filme> findByLastname();
+	// List<Cliente> findByLastname();
 
 }
