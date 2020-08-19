@@ -1,0 +1,61 @@
+<meta  charset="UTF-8" />
+<div class="container" id="container">
+	   <div id="jumbo" class="jumbotron">
+	      <!-- Campos  do formulário de filmes -->
+	    	<form novalidate name = "frmFilme" >
+	    	    <h1>BEM VINDO AO CADASTRO DE FILMES!!</h1>
+	    	    <hr/>
+				<div class="row">
+				    <div class="col-md-6">
+						<label>Data do Lançamento: </label> <input type="date"
+							   class="form-control" name = "txtDataLancamento"  placeholder="Data do lançamento"
+							   ng-model = "filme.dataLancamento" required/>
+							   <span ng-show = "frmFilme.txtDataLancamento.$error.riquered && frmFilme.txtDataLancamen.$dirty">Campo data de lançamento é obrigatório</span>
+	                </div>
+					<div class="col-md-6">
+						<label>Nome do filme: </label> <input type="text"
+							   class="form-control" name = "txtNome"  placeholder="Nome do filme"
+							   ng-model = "filme.nome" required/>
+							   <span ng-show = "frmFilme.txtNome.$error.riquered && frmFilme.txtNome.$dirty">Campo nome obrigatório</span>
+	                </div>
+	                to
+	                
+	                
+	                <div class="col-md-12">
+						<label>Descrição: </label> <input type="text"
+							   class="form-control" name = "txtDescricao"  placeholder="Descrição do filme"
+							   ng-model = "filme.descricao" required/>
+							   <span ng-show = "frmFilme.txtDescricao.$error.riquered && frmFilme.txtDescricao.$dirty">Campo descrição é obrigatório</span>
+	                </div>
+	                <div id="salvarCancelar">
+						<!-- Botão Slavar e botão cancelar -->
+						<button id="salvar" class="btn btn-lg btn-success btn-3d" 
+				                    ng-click = "salvarFilme(filme)" ng-disabled = "frmFilme.$invalid">Salvar</button> 
+						<button id="cancelar" class="btn btn-lg  btn-warning btn-3d" 
+				                    ng-click = "cancelarAlteracaoFilme(filme) " ng-disabled = "frmFilme.$invalid">Cancelar</button>
+				    </div>
+				</div>
+			</form>
+			<br/>
+			<hr/>
+			<!-- Exibe os dados do filme para o usuário em uma tabela -->		  
+		   <table class="table table-striped">
+		      <tr>
+		        <th>Data de lançamento</th>
+		        <th>Nome do filme</th>
+		        <th>Descrição do filme</th>
+		      </tr>
+		      <tr ng-repeat = "filme in filmes">
+                <td>{{filme.dataLancamento}}</td>
+                <td>{{filme.nome}}</td>
+                <td>{{filme.descricao}}</td>
+                <td><button class="btn btn-lg  btn-danger btn-block btn-3d" 
+			                ng-click = "excluirFilme(filme)">Excluir</button></td>
+			    <td><button class="btn btn-lg  btn-info btn-block btn-3d" 
+			                ng-click = "alterarFilme(filme)">Alterar</button></td>                        	      
+		      </tr>
+		   </table>
+	   </div>
+	   <div>
+	   </div>
+	</div>
