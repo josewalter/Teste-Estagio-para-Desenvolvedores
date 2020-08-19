@@ -1,6 +1,7 @@
 package br.com.testeestagioparadesenvolvedores.model;
 
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -13,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /*
  * Descrição: Entidade Aluguel
@@ -31,16 +30,24 @@ public class Aluguel {
 	@Column(name = "id_aluguel")
 	private Integer idAluguel;
 	
+	//@Temporal(value = TemporalType.DATE)
+	//@JsonFormat(pattern = "yyyy-MM-dd")
+	@Column
+	private LocalDate data_aluguel;  //= new Date(System.currentTimeMillis());
+	
+	@Column(name = "alu_valor", precision = 7, scale = 2, nullable = false)
+	private BigDecimal valor;
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tbl_cliente_id_cliente", referencedColumnName = "id_cliente", nullable = false)
 	private Cliente cliente;
 	
-	@Column
-	private LocalDate data_aluguel;
 	
-	@Column(name = "alu_valor", scale = 7, precision = 2, nullable = false)
-	private double valor;
-
+	/*
+	@ManyToOne(fetch = FetchType.EAGER)
+	private List<Cliente> clientes;
+*/
 //======================================================================================================================	
 	//Construtor builder
 	public Aluguel() {
@@ -50,13 +57,13 @@ public class Aluguel {
 
 //======================================================================================================================	
 	//Construtor and fields
-    public Aluguel(Integer idAluguel, Cliente cliente, LocalDate data_aluguel, double valor) {
+	public Aluguel(Integer idAluguel, Cliente cliente, LocalDate data_aluguel, BigDecimal valor) {
 		super();
 		this.idAluguel = idAluguel;
 		this.cliente = cliente;
 		this.data_aluguel = data_aluguel;
 		this.valor = valor;
-}
+	}
 
 //======================================================================================================================	
   	//Getters and Setters
@@ -68,8 +75,8 @@ public class Aluguel {
 		this.idAluguel = idAluguel;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public String getCliente() {
+		return cliente.getNome();
 	}
 
 	public void setCliente(Cliente cliente) {
@@ -84,11 +91,11 @@ public class Aluguel {
 		this.data_aluguel = data_aluguel;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
@@ -96,26 +103,22 @@ public class Aluguel {
 	//ToString
 	@Override
 	public String toString() {
-		return "Aluguel [idAluguel=" + idAluguel + ", cliente=" + cliente + ", data_aluguel=" + data_aluguel
-				+ ", valor=" + valor + "]";
+		return "Aluguel [idAluguel=" + idAluguel + ", data_aluguel=" + data_aluguel + ", valor=" + valor + ", cliente="
+				+ cliente + "]";
 	}
 
 //======================================================================================================================
-	//HashCode and Equals	
+	//HashCode and Equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((data_aluguel == null) ? 0 : data_aluguel.hashCode());
 		result = prime * result + ((idAluguel == null) ? 0 : idAluguel.hashCode());
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(valor);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
-
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -126,6 +129,11 @@ public class Aluguel {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluguel other = (Aluguel) obj;
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
+			return false;
 		if (data_aluguel == null) {
 			if (other.data_aluguel != null)
 				return false;
@@ -136,12 +144,10 @@ public class Aluguel {
 				return false;
 		} else if (!idAluguel.equals(other.idAluguel))
 			return false;
-		if (cliente == null) {
-			if (other.cliente != null)
+		if (valor == null) {
+			if (other.valor != null)
 				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
-		if (Double.doubleToLongBits(valor) != Double.doubleToLongBits(other.valor))
+		} else if (!valor.equals(other.valor))
 			return false;
 		return true;
 	}

@@ -18,12 +18,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tbl_res_aluguel_filme")
-public class ReferenciaAluguelFilme {
-	
+public class ResAluguelFilme {
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	@Column(name = "id_res_aluguel_filme")
-	private Integer idReferenciaAlugelFilme;
+	private Integer idResAlugelFilme;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tbl_filme_id_filme", referencedColumnName = "id_filme", nullable = false)
@@ -35,28 +35,28 @@ public class ReferenciaAluguelFilme {
 
 //======================================================================================================================	
 	//Construtor builder	
-	public ReferenciaAluguelFilme() {
-		super();
+	public ResAluguelFilme() {
+		
 		
 	}
 	
 //======================================================================================================================	
 	//Construtor and fields
-	public ReferenciaAluguelFilme(Integer idReferenciaAlugelFilme, Filme filme, Aluguel aluguel)  {
+	public ResAluguelFilme(Integer idResAlugelFilme, Filme filme, Aluguel aluguel)  {
 		super();
-		this.idReferenciaAlugelFilme = idReferenciaAlugelFilme;
+		this.idResAlugelFilme = idResAlugelFilme;
 		this.filme = filme;
 		this.aluguel = aluguel;
 	}
 
 //======================================================================================================================	
   	//Getters and Setters    
-	public Integer getIdReferenciaAlugelFilme() {
-		return idReferenciaAlugelFilme;
+	public Integer getIdResAlugelFilme() {
+		return idResAlugelFilme;
 	}
 
-	public void setIdReferenciaAlugelFilme(Integer idReferenciaAlugelFilme) {
-		this.idReferenciaAlugelFilme = idReferenciaAlugelFilme;
+	public void setIdResAlugelFilme(Integer idResAlugelFilme) {
+		this.idResAlugelFilme = idResAlugelFilme;
 	}
 
 	public Filme getFilme() {
@@ -79,7 +79,7 @@ public class ReferenciaAluguelFilme {
 	//ToString
 	@Override
 	public String toString() {
-		return "ReferenciaAluguelFilme [idReferenciaAlugelFilme=" + idReferenciaAlugelFilme + ",filme=" + filme
+		return "ResAluguelFilme [idResAlugelFilme=" + idResAlugelFilme + ",filme=" + filme
 				+ ", aluguel=" + aluguel + "]";
 	}
 
@@ -91,7 +91,7 @@ public class ReferenciaAluguelFilme {
 		int result = 1;
 		result = prime * result + ((aluguel == null) ? 0 : aluguel.hashCode());
 		result = prime * result + ((filme == null) ? 0 : filme.hashCode());
-		result = prime * result + ((idReferenciaAlugelFilme == null) ? 0 : idReferenciaAlugelFilme.hashCode());
+		result = prime * result + ((idResAlugelFilme == null) ? 0 : idResAlugelFilme.hashCode());
 		return result;
 	}
 
@@ -103,7 +103,7 @@ public class ReferenciaAluguelFilme {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ReferenciaAluguelFilme other = (ReferenciaAluguelFilme) obj;
+		ResAluguelFilme other = (ResAluguelFilme) obj;
 		if (aluguel == null) {
 			if (other.aluguel != null)
 				return false;
@@ -114,10 +114,10 @@ public class ReferenciaAluguelFilme {
 				return false;
 		} else if (!filme.equals(other.filme))
 			return false;
-		if (idReferenciaAlugelFilme == null) {
-			if (other.idReferenciaAlugelFilme != null)
+		if (idResAlugelFilme == null) {
+			if (other.idResAlugelFilme != null)
 				return false;
-		} else if (!idReferenciaAlugelFilme.equals(other.idReferenciaAlugelFilme))
+		} else if (!idResAlugelFilme.equals(other.idResAlugelFilme))
 			return false;
 		return true;
 	}

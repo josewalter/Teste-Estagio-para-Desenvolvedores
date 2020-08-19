@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 /*
  * Descrição: Entidade Filme
  * Data: 14/08/2020  01:56
@@ -19,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tbl_filme")
 public class Filme {
-		
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	@Column(name = "id_filme")

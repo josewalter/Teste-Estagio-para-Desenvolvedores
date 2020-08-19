@@ -38,7 +38,7 @@ public class Cliente {
 		super();
 		this.idCliente = idCliente;
 		this.nome = nome;
-		
+				
 	}
 
 //======================================================================================================================	
@@ -63,7 +63,7 @@ public class Cliente {
 	 //ToString
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + "]";
+		return "Cliente [idCliente=" + idCliente + ", nome=" + nome  + "]";
 	}
 
 //======================================================================================================================
