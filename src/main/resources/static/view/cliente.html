@@ -1,0 +1,42 @@
+<meta  charset="UTF-8" />
+<div class="container" id="container">
+	   <div id="jumbo" class="jumbotron">
+	      <!-- Campos  do formulário de clientes -->
+	    	<form novalidate name = "frmCliente" >
+	    	    <h1>BEM VINDO AO CADASTRO DE CLIENTES!!</h1>
+	    	    <hr/>
+				<div class="row">
+					<div class="col-md-12">
+						<label>Nome do cliente: </label> <input type="text"
+							   class="form-control" name = "txtNome"  placeholder="Nome do cliente"
+							   ng-model = "cliente.nome" required/>
+							   <span ng-show = "frmCliente.txtNome.$error.riquered && frmCliente.txtNome.$dirty">Campo nome obrigatório</span>
+	                </div>
+	                <div id="salvarCancelar">
+						<!-- Botão Slavar e botão cancelar -->
+						<button id="salvar" class="btn btn-lg btn-success btn-3d" 
+				                    ng-click = "salvarCliente(cliente)" ng-disabled = "frmCliente.$invalid">Salvar</button> 
+						<button id="cancelar" class="btn btn-lg  btn-warning btn-3d" 
+				                    ng-click = "cancelarAlteracaoCliente(cliente) " ng-disabled = "frmCliente.$invalid">Cancelar</button>
+				    </div>
+				</div>
+			</form>
+			<br/>
+			<hr/>
+			<!-- Exibe os dados do cliente para o usuário em uma tabela -->		  
+		   <table class="table table-striped">
+		      <tr>
+		        <th>Nome do cliente</th>
+		      </tr>
+		      <tr ng-repeat = "cliente in clientes">
+                <td>{{cliente.nome}}</td>
+                <td><button class="btn btn-lg  btn-danger btn-block btn-3d" 
+			                ng-click = "excluirCliente(cliente)">Excluir</button></td>
+			    <td><button class="btn btn-lg  btn-info btn-block btn-3d" 
+			                ng-click = "alterarCliente(cliente)">Alterar</button></td>                        	      
+		      </tr>
+		   </table>
+	   </div>
+	   <div>
+	   </div>
+	</div>

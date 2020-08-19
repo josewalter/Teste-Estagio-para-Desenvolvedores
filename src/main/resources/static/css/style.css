@@ -1,0 +1,26 @@
+/* CSS de todos os h1*/
+h1{
+	
+	color: #EE0000;
+	margin-center: 500px;
+	text-align: center;
+}
+
+/* CSS dos botões salvar e cancelar*/
+#salvarCancelar{
+	margin-top: 2px;
+	margin-left: 14px;
+}
+
+/* div principal da cliente.html só que não está funcionando*/
+#container{
+	margin-right: 300px;
+}
+
+p{
+	color: #EE0000;
+	margin-center: 500px;
+	text-align: center;
+	
+}
+ 
